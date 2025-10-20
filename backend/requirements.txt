@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pdfminer.six
+pdfplumber
+pdf2image
+pytesseract
+Pillow
+httpx
+openai

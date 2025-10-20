@@ -1,0 +1,88 @@
+/* src/index.css */
+:root{
+  --bg:#0f1629; --card:#141b2d; --muted:#9fb0d3; --text:#e6efff;
+  --acc:#7aa2ff; --acc2:#7bffdc; --border:#2a3553;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:linear-gradient(120deg,#0c1122,#0e1630);
+  color:var(--text);
+  font-family:Inter,system-ui,Arial;
+  -webkit-font-smoothing:antialiased;
+}
+
+.page{max-width:1200px;margin:30px auto;padding:0 16px}
+
+/* header */
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding:12px}
+.title{font-weight:700;display:flex;gap:10px;align-items:center}
+.title .dot{width:12px;height:12px;border-radius:999px;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 0 14px rgba(122,162,255,.15)}
+
+.mainnav{display:flex;gap:10px}
+.navbtn{background:#0e1730;border:1px solid var(--border);color:var(--muted);padding:10px 14px;border-radius:10px;cursor:pointer}
+.navbtn.active{color:white;border-color:#516ef5;box-shadow:0 0 0 2px rgba(122,162,255,.12) inset}
+
+/* layout */
+.grid{display:grid;grid-template-columns:1fr 420px;gap:18px}
+@media(max-width:1000px){.grid{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
+.panel{padding:12px}
+
+/* forms */
+.stack{display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:8px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:900px){.twocol{grid-template-columns:1fr}}
+
+.label{font-size:12px;color:var(--muted)}
+.switch{display:flex;gap:10px;align-items:center}
+.switch input{display:none}
+.switch .knob{width:34px;height:20px;border-radius:999px;background:#273257;position:relative}
+.switch .knob::after{content:'';position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#b7c6ff;transition:.18s}
+.switch input:checked + .knob{background:#2644ff}
+.switch input:checked + .knob::after{left:17px;background:#fff}
+
+select,input,textarea{width:100%;background:#0e1730;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px;font-size:15px}
+.textarea{min-height:120px;resize:vertical}
+
+.uploader{border:1px dashed var(--border);padding:14px;border-radius:12px;text-align:center}
+
+.muted{color:var(--muted)}
+.small{font-size:12px}
+
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.btn{background:#17224a;border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer;min-height:40px}
+.btn.primary{background:linear-gradient(90deg,var(--acc),var(--acc2));border:none;color:#0c1222}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
+
+/* preview */
+.preview{min-height:260px;border:1px solid var(--border);border-radius:12px;padding:14px;background:#0e1730;overflow:auto}
+
+/* quiz styling */
+.quizlist{display:flex;flex-direction:column;gap:16px}
+.qbox{border:1px solid rgba(255,255,255,0.03);border-radius:12px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
+.q{margin-bottom:12px;font-size:16px;line-height:1.3}
+.qn{font-weight:700;margin-right:6px;color:var(--acc)}
+
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);min-height:56px;cursor:pointer;transition:all .12s ease}
+.opt:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,0.28)}
+.opt.sel{background:linear-gradient(90deg, rgba(122,162,255,0.12), rgba(123,255,220,0.06));border-color:rgba(122,162,255,0.12)}
+.opt.correct{background:linear-gradient(90deg, rgba(72,201,176,0.12), rgba(72,201,176,0.05));border-color:rgba(72,201,176,0.12)}
+.opt.wrong{background:linear-gradient(90deg, rgba(255,107,107,0.06), rgba(255,75,75,0.03));border-color:rgba(255,107,107,0.12)}
+
+.opt input[type="radio"]{margin:0;width:18px;height:18px;flex:0 0 18px}
+.letter{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;font-weight:700;flex:0 0 36px}
+.opttext{flex:1;word-break:break-word;line-height:1.25}
+
+/* small adjustments */
+.resultcard{margin-top:12px;background:transparent;border:none;padding:0}
+.score{margin-top:10px;font-weight:700}
+.reveal{animation:fadeUp .25s ease-out both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* history items and spacing */
+.qbox + .qbox{margin-top:8px}

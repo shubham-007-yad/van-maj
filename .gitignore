@@ -1,0 +1,20 @@
+# === Python / FastAPI ===
+backend/__pycache__/
+backend/.venv/
+backend/venv/
+backend/.env
+*.pyc
+
+# === Node / React / Vite ===
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/*.log
+frontend/.env.local
+frontend/.env.development
+frontend/.env.production
+
+# === OS / Editors ===
+.DS_Store
+.vscode/
+.idea/

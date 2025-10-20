@@ -1,0 +1,146 @@
+/* ---- Global Futuristic Theme ---- */
+:root {
+  --bg1: #0f172a;
+  --bg2: #111827;
+  --fg:  #e5e7eb;
+  --muted: #a3a3a3;
+  --brand: #7c3aed;   /* violet */
+  --brand-2: #06b6d4; /* cyan */
+  --card: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.12);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --err: #ef4444;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(1200px 800px at 10% 10%, #0b132b 0%, var(--bg1) 50%, var(--bg2) 100%);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.bg-anim {
+  background: radial-gradient(1200px 800px at 90% 10%, #112240 0%, transparent 40%),
+              radial-gradient(1200px 800px at 10% 90%, #1f1235 0%, transparent 40%),
+              linear-gradient(160deg, #0b132b 0%, #111827 60%);
+  animation: drift 16s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(15deg); }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 18px 44px;
+}
+
+.card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-weight: 700; letter-spacing: .3px; font-size: 22px;
+  display: flex; gap: 10px; align-items: center;
+}
+.title .dot {
+  width: 12px; height: 12px; border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  box-shadow: 0 0 14px var(--brand-2);
+}
+
+.grid {
+  display: grid; gap: 18px;
+  grid-template-columns: 1fr 1.1fr;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+.panel {
+  padding: 18px; border-radius: 16px;
+  background: var(--card); border: 1px solid var(--border);
+}
+
+.row { display: grid; gap: 12px; }
+
+.label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+
+input[type="text"], input[type="number"], select {
+  width: 100%; padding: 10px 12px; border-radius: 12px;
+  background: rgba(255,255,255,0.04); color: var(--fg);
+  border: 1px solid var(--border); outline: none;
+}
+input:focus, select:focus { border-color: var(--brand-2); box-shadow: 0 0 0 3px rgba(6,182,212,.15); }
+
+.switch {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+}
+.switch .knob {
+  width: 42px; height: 24px; background: rgba(255,255,255,.15);
+  border: 1px solid var(--border); border-radius: 999px; position: relative; transition: .2s;
+}
+.switch .knob::after {
+  content: ""; position: absolute; top: 2px; left: 2px;
+  width: 18px; height: 18px; border-radius: 999px; background: white; transition: .2s;
+}
+.switch input:checked + .knob {
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border-color: transparent;
+}
+.switch input:checked + .knob::after { transform: translateX(18px); }
+
+.btn {
+  padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border);
+  color: white; background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  cursor: pointer; font-weight: 600;
+}
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+}
+
+.dnd {
+  border: 1.6px dashed rgba(255,255,255,0.25);
+  border-radius: 14px; padding: 22px; text-align: center;
+  transition: .15s; background: rgba(255,255,255,0.03);
+}
+.dnd.drag { border-color: var(--brand-2); background: rgba(6,182,212,0.08); }
+
+.preview {
+  height: 66vh; overflow: auto; border-radius: 12px; padding: 16px;
+  background: rgba(0,0,0,0.25); border: 1px solid var(--border);
+}
+
+.progress {
+  height: 6px; border-radius: 999px; overflow: hidden;
+  background: rgba(255,255,255,0.08); border: 1px solid var(--border);
+}
+.progress > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  width: 45%;
+  animation: load 1.2s ease-in-out infinite;
+}
+@keyframes load { 0% { transform: translateX(-60%);} 100% { transform: translateX(120%);} }
+
+.markdown h1, .markdown h2 { margin: 8px 0 8px; }
+.markdown h1 { font-size: 22px; }
+.markdown h2 { font-size: 18px; }
+.markdown ul { padding-left: 20px; }
+.markdown li { margin: 6px 0; }
